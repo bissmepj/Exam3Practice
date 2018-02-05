@@ -305,9 +305,16 @@ def practice_problem4c(points):
       :rtype: rg.Point | string
     """
     for i in range(len(points)):
-        
+        x = points[i].x
+        y = points[i].y
+        if is_prime(x) and is_prime(y):
+            points[i].x = y
+            points[i].y = x
+            return points[i]
+    return "Not found"
+
     ####################################################################
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #     The testing code is already written for you (above).
     #
     # IMPORTANT: This problem is your LOWEST PRIORITY for preparing
@@ -402,8 +409,13 @@ def practice_problem4d(sequence):
       :type sequence: (list | tuple) of int
       :rtype: int
     """
+    total = 0
+    for i in range(len(sequence) - 1):
+        if is_prime(sequence[i]) and is_prime(sequence[i + 1]) and sequence[i] != sequence[i + 1]:
+            total += sequence[i]
+    return total
     ####################################################################
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #     The testing code is already written for you (above).
     ####################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
