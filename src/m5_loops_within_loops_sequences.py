@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  LOOPS WITHIN LOOPS in SEQUENCES-OF-SUBSEQUENCES problems.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Phil Bissmeyer.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -31,14 +31,14 @@ Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
 
 def main():
     """ Calls the   TEST   functions in this module. """
-    run_test_integers()
+    # run_test_integers()
     run_test_big_letters()
 
 
 def run_test_integers():
     """ Tests the    integers    function. """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement this TEST function.
+    # DONE: 2. Implement this TEST function.
     #   It TESTS the  integers  function defined below.
     #   Include at least ** 1 ** ADDITIONAL test beyond those we wrote.
     #
@@ -71,6 +71,22 @@ def run_test_integers():
     print('Expected is:', expected)
     print('Actual is:  ', answer)
 
+    print()
+    print()
+
+    expected = [3, 0, 12, 0, 3, 432, 55, -40]
+    answer = integers([(3, 0),
+                       (12, 'woohoo', 0),
+                       [1.0, 2.5, 3, 432],
+                       'hello',
+                       [],
+                       ['oops'],
+                       [55, [44]],
+                       [30.1234, -40]
+                       ])
+    print('Expected is:', expected)
+    print('Actual is:  ', answer)
+
 
 def integers(sequence_of_sequences):
     """
@@ -94,8 +110,15 @@ def integers(sequence_of_sequences):
       :type sequence_of_sequences: (list|tuple) of (list|tuple|string)
       :rtype: list of int
     """
+    final = []
+    for i in range(len(sequence_of_sequences)):
+        seq = sequence_of_sequences[i]
+        for j in range(len(seq)):
+            if type(seq[j]) == int:
+                final.append(seq[j])
+    return final
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # ------------------------------------------------------------------
     ####################################################################
@@ -123,7 +146,7 @@ def integers(sequence_of_sequences):
 def run_test_big_letters():
     """ Tests the    big_letters    function. """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement this TEST function.
+    # DONE: 4. Implement this TEST function.
     #   It TESTS the  big_letters  function defined below.
     #   Include at least ** 1 ** ADDITIONAL test beyond those we wrote.
     # ------------------------------------------------------------------
@@ -158,6 +181,20 @@ def run_test_big_letters():
                           ])
     print('Expected is:', expected)
     print('Actual is:  ', answer)
+    print()
+    print()
+
+    expected = 'PHILBISSMEYER'
+    answer = big_letters(['PHilIp bissmeyer',
+                          (1, 2, 3, 4),
+                          'Love BIg',
+                          'SS Melon',
+                          ("apple", "sauce"),
+                          'philip bissmEYER'])
+    print('Expected is:', expected)
+    print('Actual is:  ', answer)
+    print()
+    print()
 
 
 def big_letters(sequence_of_sequences):
@@ -188,8 +225,15 @@ def big_letters(sequence_of_sequences):
 
     Precondition:  the given argument is a sequence of sequences.
     """
+    final = ""
+    for i in range(len(sequence_of_sequences)):
+        if type(sequence_of_sequences[i]) == str:
+            for j in range(len(sequence_of_sequences[i])):
+                if sequence_of_sequences[i][j].isupper():
+                    final += sequence_of_sequences[i][j]
+    return final
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # ------------------------------------------------------------------
     ####################################################################
